@@ -21,11 +21,20 @@ defmodule CartService do
   end
 
   def reduce(state) do
-    Enum.reduce state, %{}, fn el, acc ->
+    List.foldr state, %{}, fn el, acc ->
       case el.action do
         :add -> IO.inspect el
         Map.update acc, el.item, %{cnt: 1}, fn cnt -> %{cnt: cnt.cnt+1} end
+        :remove ->
+          Map.update acc, el.item, %{cnt: 0}, fn cnt ->
+            if cnt.cnt <= 0 do
+              %{cnt: 0}
+            else
+              %{cnt: cnt.cnt-1}
+            end
+          end
         _ -> IO.puts "blah"
+        acc
       end
     end
   end
