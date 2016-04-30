@@ -20,8 +20,14 @@ defmodule CartService do
     nil
   end
 
-  def reduce([last_event | rest_of_events]) do
-    last_event
+  def reduce(state) do
+    Enum.reduce state, %{}, fn el, acc ->
+      case el.action do
+        :add -> IO.inspect el
+        Map.update acc, el.item, %{cnt: 1}, fn cnt -> %{cnt: cnt.cnt+1} end
+        _ -> IO.puts "blah"
+      end
+    end
   end
 
 end
