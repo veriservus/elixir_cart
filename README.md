@@ -1,1 +1,4 @@
-# elixir_cart
+# ElixirCart
+
+**TODO: Add description**
+
