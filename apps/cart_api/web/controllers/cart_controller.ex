@@ -8,14 +8,14 @@ defmodule CartApi.CartController do
       render conn, json_response: %{ created: user }
     end
 
-    def add(conn, %{"user" => user}) do
-      CartService.CartAgent.add_item  String.to_atom(user), :food
-      render conn, json_response: %{ added: [user, :food] }
+    def add(conn, %{"user" => user, "item" => item}) do
+      CartService.CartAgent.add_item  String.to_atom(user), String.to_atom(item)
+      render conn, json_response: %{ added: [user, item] }
     end
 
-    def remove(conn, %{"user" => user}) do
-      CartService.CartAgent.add_item  String.to_atom(user), :food
-      render conn, json_response: %{ removed: [user, :food] }
+    def remove(conn, %{"user" => user, "item" => item}) do
+      CartService.CartAgent.add_item  String.to_atom(user), String.to_atom(item)
+      render conn, json_response: %{ removed: [user, item] }
     end
 
     def show(conn, %{"user" => user}) do
