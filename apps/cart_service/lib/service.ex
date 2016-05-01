@@ -1,4 +1,4 @@
-defmodule CartService do
+defmodule CartService.Service do
 
   def add_item(state, item) do
     append_event(state, make_event(item, :add))
