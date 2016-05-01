@@ -7,6 +7,10 @@ defmodule CartApi.Router do
 
   scope "/api", CartApi do
     pipe_through :api
-    get "/:user", CartController, :index
+
+    get "/create/:user", CartController, :create
+    get "/add/:user", CartController, :add
+    get "/remove/:user", CartController, :remove
+    get "/show/:user", CartController, :show
   end
 end
