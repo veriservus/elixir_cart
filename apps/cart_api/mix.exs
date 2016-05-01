@@ -34,6 +34,7 @@ defmodule CartApi.Mixfile do
   defp deps do
     [{:phoenix, "~> 1.1.4"},
      {:gettext, "~> 0.9"},
-     {:cowboy, "~> 1.0"}]
+     {:cowboy, "~> 1.0"},
+     {:cart_service, in_umbrella: true}]
   end
 end
